@@ -347,10 +347,10 @@ span.flow-box-title { display: block; font-weight: 700; font-size: 14px; color: 
 .dot-faint { background: var(--ink-faint); }
 
 /* Filter pills */
-.filter-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.filter-pill { font-size: 13px; font-weight: 500; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 8px 16px; cursor: pointer; transition: all 0.2s ease; }
-.filter-pill:hover { border-color: var(--blue); color: var(--blue-deep); }
-.filter-pill.active { background: linear-gradient(135deg, var(--coral), var(--blue)); color: #fff; border-color: transparent; }
+.filter-pills { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-bottom: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.filter-pill { font-size: 13px; font-weight: 600; color: var(--ink-soft); background: transparent; border: none; border-radius: 999px; padding: 8px 16px; cursor: pointer; transition: all 0.2s ease; }
+.filter-pill:hover:not(.active) { color: var(--blue-deep); }
+.filter-pill.active { background: var(--blue-deep); color: #fff; box-shadow: var(--shadow-sm); }
 
 /* Automation gallery (horizontal drag cards) — neumorphic light tiles */
 .automation-gallery { padding-bottom: 12px; }
