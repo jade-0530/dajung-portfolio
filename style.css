@@ -69,7 +69,12 @@ a { color: inherit; }
   overflow-y: auto;
 }
 .sidenav-top { display: flex; flex-direction: column; }
+.sidenav-top-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .sidenav-brand { display: flex; flex-direction: column; gap: 4px; }
+.lang-toggle { display: inline-flex; flex-shrink: 0; background: rgba(0,0,0,0.03); border: 1px solid var(--line); border-radius: 999px; padding: 2px; gap: 2px; }
+.lang-btn { border: none; background: transparent; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; color: var(--ink-faint); padding: 4px 9px; border-radius: 999px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+.lang-btn.active { background: var(--ink); color: var(--surface); }
+.lang-btn:not(.active):hover { color: var(--ink); }
 .sidenav-name { font-family: var(--font-display); font-weight: 900; font-size: 18px; letter-spacing: 0.02em; }
 .sidenav-role { font-size: 12px; color: var(--ink-faint); }
 .sidenav-list { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
@@ -100,7 +105,6 @@ a { color: inherit; }
 #ai-automation { background: var(--paper-alt); }
 #campaign { background: var(--paper); }
 #website-analysis { background: var(--paper-alt); }
-#personal-project { background: var(--paper); }
 #contact { background: var(--blue-deep); padding: 72px 0; }
 #contact .section-title, #contact .contact-desc, #contact .footer-note, #contact .contact-phone { color: #fff; }
 #contact .eyebrow { color: rgba(255,255,255,0.85); }
@@ -372,6 +376,9 @@ span.flow-box-title { display: block; font-weight: 700; font-size: 14px; color: 
 .auto-overlay p { font-size: 12px; color: #fff; margin: 0; line-height: 1.5; }
 .auto-overlay p b { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255,255,255,0.7); margin-bottom: 2px; font-weight: 700; }
 .auto-more { font-size: 12px; color: #fff; font-weight: 700; margin-top: 4px; }
+
+/* Applied-service modal style (used by AI Automation detail modals) */
+
 
 /* Campaign modal v2 — white cards, drop shadows, icon badge header */
 .modal-panel-v2 { background: #EDEAE0; }

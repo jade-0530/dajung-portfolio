@@ -1,3 +1,41 @@
+// ---- KO/EN language toggle ----
+// How it works: every translatable element is marked with the boolean
+// attribute `data-i18n`. On first load we snapshot each element's current
+// (Korean) markup into `data-ko` so we can always restore it. When an
+// element also carries `data-en="..."`, switching to EN swaps that element's
+// content to the English text. Elements with `data-i18n` but no `data-en`
+// yet simply stay in Korean when EN is selected — so translations can be
+// added incrementally, section by section, without breaking anything.
+(function initLanguageToggle() {
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  i18nEls.forEach(el => {
+    if (!el.dataset.ko) el.dataset.ko = el.innerHTML;
+  });
+
+  function applyLanguage(lang) {
+    i18nEls.forEach(el => {
+      if (lang === 'en' && el.dataset.en) {
+        el.innerHTML = el.dataset.en;
+      } else {
+        el.innerHTML = el.dataset.ko;
+      }
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  let savedLang = 'ko';
+  try { savedLang = localStorage.getItem('site-lang') || 'ko'; } catch (e) {}
+  if (savedLang === 'en') applyLanguage('en');
+})();
+
 // Mobile nav toggle
 const sidenav = document.getElementById('sidenav');
 const mobileToggle = document.getElementById('mobileNavToggle');
